@@ -26,19 +26,17 @@ switch($accion)
         break;
 
     case"Modificar":
-
-        $sentenciaSQL=$conexion->prepare("UPDATE libros SET nombre=:nombre WHERE id=:id");  
+        $sentenciaSQL=$conexion->prepare("UPDATE libros SET nombre=:nombre WHERE id=:id");   
         $sentenciaSQL->bindParam(':nombre',$txtNombre);
         $sentenciaSQL->bindParam(':id',$txtID);
-        $sentenciaSQL->execute();  
+        $sentenciaSQL->execute(); 
 
         if($txtImagen!=""){
-         $sentenciaSQL=$conexion->prepare("UPDATE libros SET imagen=:imagen WHERE id=:id");  
-         $sentenciaSQL->bindParam(':imagen',$txImagen);
-         $sentenciaSQL->bindParam(':id',$txtID);
-         $sentenciaSQL->execute();  
+        $sentenciaSQL=$conexion->prepare("UPDATE libros SET imagen=:imagen WHERE id=:id");   
+        $sentenciaSQL->bindParam(':nombre',$txtImagen);
+        $sentenciaSQL->bindParam(':id',$txtID);
+        $sentenciaSQL->execute(); 
         }
-
          break;
 
     case"Cancelar":
@@ -88,12 +86,13 @@ $listalibros=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 <div class = "form-group">
 <label for="txtNombre">Nombre:</label>
-<input type="text" class="form-control" value="<?php echo $txtNombre?>" name="txtNombre" id="txtNombre"  placeholder="Nombre del libro">
+<input type="text" class="form-control" value="<?php echo $txtNombre?> "name="txtNombre" id="txtNombre"  placeholder="Nombre del libro">
 </div>
 
 <div class = "form-group">
 <label for="txtNombre">Imagen:</label>
-"<?php echo $txtImagen;?>
+<input type="file" class="form-control" name="txtImagen" id="txtImagen" placeholder="nombre del libro">
+"<?php echo $txtImagen?>
 </div>
 
 <div class="btn-group" role="group" aria-label="">
