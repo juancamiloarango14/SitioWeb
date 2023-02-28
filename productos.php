@@ -1,77 +1,25 @@
-<?php
-include("template/cabecera.php");
+<?php include("template/cabecera.php"); ?>
+
+<?php 
+include ("administrador/config/bd.php");
+$sentenciaSQL=$conexion->prepare("SELECT * FROM libros");
+$sentenciaSQL->execute();
+$listalibros=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);  
 ?>
 
-<div class="col-md-3">
-    
+<?php foreach ($listalibros as $libros) { ?>
+
+<div class="col-md-3">    
 <div class="card">
-
-    <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="">
-
-    <div class="card-body">
-
-        <h4 class="card-title">Libro PHP</h4>
-        <a name="" id="" class="btn btn-primary" href="#" role="button"> ver más </a>
-        
-    </div>
-
+ <img class="card-img-top" src="./img/<?php echo $libros['imagen']; ?>" alt="">
+ <div class="card-body">
+ <h4 class="card-title"><?php echo $libros['nombre']; ?></h4>
+ <a name="" id="" class="btn btn-primary" href="https://goalkicker.com/" role="button"> ver más </a>        
+</div>
+</div>
 </div>
 
-</div>
-
-
-<div class="col-md-3">
-    
-<div class="card">
-
-    <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="">
-
-    <div class="card-body">
-
-        <h4 class="card-title">Libro PHP</h4>
-        <a name="" id="" class="btn btn-primary" href="#" role="button"> ver más </a>
-        
-    </div>
-
-</div>
-
-</div>
-
-
-<div class="col-md-3">
-    
-<div class="card">
-
-    <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="">
-
-    <div class="card-body">
-
-        <h4 class="card-title">Libro PHP</h4>
-        <a name="" id="" class="btn btn-primary" href="#" role="button"> ver más </a>
-        
-    </div>
-
-</div>
-
-</div>
-
-<div class="col-md-3">
-    
-<div class="card">
-
-    <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="">
-
-    <div class="card-body">
-
-        <h4 class="card-title">Libro PHP</h4>
-        <a name="" id="" class="btn btn-primary" href="#" role="button"> ver más </a>
-        
-    </div>
-
-</div>
-
-</div>
-
+<?php } ?>
 
 <?php
 include("template/pie.php");

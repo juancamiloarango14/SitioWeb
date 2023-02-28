@@ -1,6 +1,21 @@
 <?php
+session_start();
+
 if($_POST){
+  if(($_POST['Usuario']=="develoteca")&&($_POST['Contraseña']=="sistema")){
+
+    $_SESSION['usuario']="ok";
+    $_SESSION['nombreUsuario']="Develoteca";
+
     header('location:inicio.php');
+
+  }
+
+  else{
+    $mensaje="Error: el Usuario o contraseña son incorrectos";
+  }
+
+
 }
 
 ?>
@@ -14,8 +29,8 @@ if($_POST){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+     </head>
   <body>
      
   <div class="container">
@@ -34,7 +49,12 @@ if($_POST){
                 Login
             </div>
             <div class="card-body">
-
+              
+            <?php if(isset($mensaje)) {?>
+            <div class="alert alert-danger" role="alert">
+             <?php echo $mensaje; ?>
+            </div>
+            <?php } ?>
             <form method="POST" >
 
             <div class = "form-group">

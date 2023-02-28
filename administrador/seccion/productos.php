@@ -120,6 +120,7 @@ $sentenciaSQL->execute();
 $listalibros=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC); 
 
 ?>
+
 <div class="col-md-5">    
 
 <div class="card">

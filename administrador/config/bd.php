@@ -1,6 +1,4 @@
-<?php
-include("../template/cabecera.php");
-?>
+
 
 <?php
 $host="localhost";
